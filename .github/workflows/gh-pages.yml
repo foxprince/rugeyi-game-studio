@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build and Export static site
+      - name: Build static site (Next.js output: export)
         run: |
           REPO_NAME="${{ github.event.repository.name }}"
           OWNER="${{ github.repository_owner }}"
@@ -43,7 +43,6 @@ jobs:
           fi
           echo "Using NEXT_PUBLIC_BASE_PATH=$NEXT_PUBLIC_BASE_PATH"
           npm run build
-          npm run export
 
       - name: Prepare GitHub Pages artifacts
         run: |
