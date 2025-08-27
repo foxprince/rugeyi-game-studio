@@ -11,15 +11,29 @@ const nextConfig: NextConfig = {
   output: 'export',
   // GitHub Pages 下通常托管在 /{repo} 路径
   // 在 CI 中通过环境变量 NEXT_PUBLIC_BASE_PATH 传入，如 "/repo-name"
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH || undefined,
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
   // 静态资源前缀与 basePath 保持一致（避免资源 404）
-  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || undefined,
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
   // next/image 在静态导出下需关闭优化
   images: {
     unoptimized: true,
   },
   // 推荐开启结尾斜杠以减少 404 概率
   trailingSlash: true,
+  // 确保跨源资源难题安全加载
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "upgrade-insecure-requests"
+          }
+        ]
+      }
+    ];
+  },
   webpack: (config, { dev }) => {
     if (dev) {
       // 禁用 webpack 的热模块替换

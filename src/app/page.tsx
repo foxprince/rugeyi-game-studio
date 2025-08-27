@@ -284,21 +284,21 @@ const PixelGameStudio = () => {
                 genre: "RPG",
                 description: "Embark on an epic pixel journey through magical lands",
                 color: "from-purple-400 to-pink-400",
-                image: "/pixel-adventure.png"
+                image: "./pixel-adventure.png"
               },
               {
                 title: "Cute Puzzle",
                 genre: "Puzzle",
                 description: "Solve adorable puzzles with charming pixel characters",
                 color: "from-yellow-400 to-orange-400",
-                image: "/cute-puzzle.png"
+                image: "./cute-puzzle.png"
               },
               {
                 title: "Retro Racing",
                 genre: "Racing",
                 description: "Speed through pixel-perfect tracks in this retro racer",
                 color: "from-green-400 to-blue-400",
-                image: "/retro-racing.png"
+                image: "./retro-racing.png"
               }
             ].map((game, index) => (
               <Card key={index} className="border-4 border-black dark:border-white shadow-lg transform hover:scale-105 transition-all bg-white dark:bg-gray-800">
