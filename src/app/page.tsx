@@ -303,13 +303,11 @@ const PixelGameStudio = () => {
             ].map((game, index) => (
               <Card key={index} className="border-4 border-black dark:border-white shadow-lg transform hover:scale-105 transition-all bg-white dark:bg-gray-800">
                 <div className={`h-48 bg-gradient-to-br ${game.color} border-b-4 border-black dark:border-white relative overflow-hidden`}>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <img 
-                      src={game.image} 
-                      alt={game.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                  <img 
+                    src={game.image} 
+                    alt={game.title}
+                    className="w-full h-full object-cover"
+                  />
                   <div className="absolute top-4 right-4">
                     <Badge className="bg-black dark:bg-white text-white dark:text-black font-mono text-xs">
                       {game.genre}
