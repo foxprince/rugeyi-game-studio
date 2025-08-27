@@ -7,6 +7,19 @@ const nextConfig: NextConfig = {
   },
   // 禁用 Next.js 热重载，由 nodemon 处理重编译
   reactStrictMode: false,
+  // 为 GitHub Pages 启用静态导出
+  output: 'export',
+  // GitHub Pages 下通常托管在 /{repo} 路径
+  // 在 CI 中通过环境变量 NEXT_PUBLIC_BASE_PATH 传入，如 "/repo-name"
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || undefined,
+  // 静态资源前缀与 basePath 保持一致（避免资源 404）
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || undefined,
+  // next/image 在静态导出下需关闭优化
+  images: {
+    unoptimized: true,
+  },
+  // 推荐开启结尾斜杠以减少 404 概率
+  trailingSlash: true,
   webpack: (config, { dev }) => {
     if (dev) {
       // 禁用 webpack 的热模块替换

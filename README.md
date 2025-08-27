@@ -139,3 +139,43 @@ This scaffold includes a comprehensive set of modern web development tools:
 ---
 
 Built with ❤️ for the developer community. Supercharged by [Z.ai](https://chat.z.ai) 🚀
+
+## 部署到 GitHub Pages
+
+本项目已配置为通过 Next.js 静态导出来部署到 GitHub Pages。
+
+### 方式一：自动部署（推荐）
+
+已添加工作流：`/.github/workflows/gh-pages.yml`。
+
+* __触发__：推送到 `main` 或 `master`。
+* __路径__：自动设置 `NEXT_PUBLIC_BASE_PATH` 为 `/<仓库名>`。
+* __静态资源__：已配置 `assetPrefix` 与 `basePath` 一致。
+* __图片__：已启用 `images.unoptimized`。
+* __路由__：自动生成 `.nojekyll` 与 `404.html`（SPA 支持）。
+
+步骤：
+
+1. 仓库 Settings → Pages，将 Source 设为 “GitHub Actions”。
+2. 推送代码到默认分支，等待 Actions 完成。
+3. 访问：`https://<用户名>.github.io/<仓库名>/`。
+
+注意：若仓库名为 `<用户名>.github.io`（用户/组织主页），需将 `NEXT_PUBLIC_BASE_PATH` 设为空字符串，并可在工作流中调整该变量。
+
+### 方式二：本地构建并手动发布
+
+```bash
+# 安装依赖（首次）
+npm install
+
+# 生成静态站点（输出到 out/）
+npm run build:export
+```
+
+将 `out/` 目录上传到静态托管（如 GitHub Pages 的 `gh-pages` 分支）。
+
+### 常见问题
+
+* __资源 404__：确保 `next.config.ts` 中 `basePath` 与 `assetPrefix` 与线上子路径一致。
+* __图片不显示__：已设置 `images.unoptimized: true`。
+* __TypeScript 报错__：安装 Node 类型定义：`npm i -D @types/node`。
