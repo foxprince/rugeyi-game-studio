@@ -11,9 +11,10 @@ const nextConfig: NextConfig = {
   output: 'export',
   // GitHub Pages 下通常托管在 /{repo} 路径
   // 在 CI 中通过环境变量 NEXT_PUBLIC_BASE_PATH 传入，如 "/repo-name"
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  // 自定义域名时应为空
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || undefined,
   // 静态资源前缀与 basePath 保持一致（避免资源 404）
-  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || undefined,
   // next/image 在静态导出下需关闭优化
   images: {
     unoptimized: true,
