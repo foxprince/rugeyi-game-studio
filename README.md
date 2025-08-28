@@ -156,7 +156,7 @@ Built with ❤️ for the developer community. Supercharged by [Z.ai](https://ch
 
 步骤：
 
-1. 仓库 Settings → Pages，将 Source 设为 “GitHub Actions”。
+1. 仓库 Settings → Pages，将 Source 设为 "Deploy from a branch"，选择 `gh-pages` 分支。
 2. 推送代码到默认分支，等待 Actions 完成。
 3. 访问：`https://<用户名>.github.io/<仓库名>/`。
 
@@ -169,7 +169,7 @@ Built with ❤️ for the developer community. Supercharged by [Z.ai](https://ch
 npm install
 
 # 生成静态站点（输出到 out/）
-npm run build:export
+npm run build
 ```
 
 将 `out/` 目录上传到静态托管（如 GitHub Pages 的 `gh-pages` 分支）。
